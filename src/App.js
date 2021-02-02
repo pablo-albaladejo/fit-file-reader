@@ -1,22 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+
+var fReader = new FileReader();
+
+fReader.onload = function (e) {
+  const arrayBuffer = e.target.result
+  console.log(arrayBuffer)
+}
+
+const handleChange = (files) => {
+  var file = files[0];
+  fReader.readAsArrayBuffer(file);
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <input type="file" id="myfileinput" multiple accept=".fit" onChange={(e) => handleChange(e.target.files)}></input>
       </header>
     </div>
   );
