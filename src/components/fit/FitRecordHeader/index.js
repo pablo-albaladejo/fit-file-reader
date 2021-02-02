@@ -5,11 +5,36 @@ const FitRecordHeader = ({ header }) => {
     <div>
       {header && (
         <>
-          <div>{'compressed: ' + header.compressed}</div>
-          <div>{'developerDataFlag: ' + header.developerDataFlag}</div>
-          <div>{'localMessageType: ' + header.localMessageType}</div>
-          <div>{'messageType: ' + header.messageType}</div>
-          <div>{'reserved: ' + header.reserved}</div>
+          <table style={{ style: "100%", margin: "8px" }}>
+            <thead>
+              <tr>
+                <th style={{ width: "50%" }}>Key</th>
+                <th style={{ width: "50%" }}>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Header Type</td>
+                <td>{header.compressed}</td>
+              </tr>
+              <tr>
+                <td>Message Type</td>
+                <td>{header.messageType}</td>
+              </tr>
+              <tr>
+                <td>Developer flag</td>
+                <td>{header.developerDataFlag}</td>
+              </tr>
+              <tr>
+                <td>Message Type Specific</td>
+                <td>{header.reserved}</td>
+              </tr>
+              <tr>
+                <td>Local Message Type</td>
+                <td>{header.localMessageType}</td>
+              </tr>
+            </tbody>
+          </table>
         </>
       )}
     </div>

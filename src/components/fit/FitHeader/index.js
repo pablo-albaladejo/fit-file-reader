@@ -5,17 +5,43 @@ const FitHeader = ({ header }) => {
   return (
     <Section>
       {header && (
-        <>
-          <p>{'Header'}</p>
-          <div>{'headerSize: ' + header.headerSize}</div>
-          <div>{'protocolVersion: ' + header.protocolVersion}</div>
-          <div>{'profileVersion: ' + header.profileVersion}</div>
-          <div>{'dataSize: ' + header.dataSize}</div>
-          <div>{'fileType: ' + header.fileType}</div>
-          <div>{'crc: ' + header.crc}</div>
-        </>
-      )}
-    </Section>
+        <table style={{ style: "100%" }}>
+          <thead>
+            <tr>
+              <th style={{ width: "50%" }}>Key</th>
+              <th style={{ width: "50%" }}>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Header Size</td>
+              <td>{header.headerSize}</td>
+            </tr>
+            <tr>
+              <td>Protocol Version</td>
+              <td>{header.protocolVersion}</td>
+            </tr>
+            <tr>
+              <td>Profile Version</td>
+              <td>{header.profileVersion}</td>
+            </tr>
+            <tr>
+              <td>Data Size</td>
+              <td>{header.dataSize}</td>
+            </tr>
+            <tr>
+              <td>Data Type</td>
+              <td>{header.fileType}</td>
+            </tr>
+            <tr>
+              <td>CRC</td>
+              <td>{header.crc}</td>
+            </tr>
+          </tbody>
+        </table>
+      )
+      }
+    </Section >
   )
 }
 

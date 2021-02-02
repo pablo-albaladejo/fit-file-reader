@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div style={styles}>
-      <input type="file" id="myfileinput" multiple accept=".fit" onChange={(e) => handleChange(e.target.files)}></input>
+      <input type="file" id="myfileinput" accept=".fit" onChange={(e) => handleChange(e.target.files)}></input>
       <FitFileViewer
         file={fitFile}
       />
