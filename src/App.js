@@ -1,7 +1,17 @@
 import React from 'react'
-import FitFileViewer from './components/FitFileViewer'
+import FitFileViewer from './components/fit/FitFileViewer'
 import { parseFile } from './libs/fit'
-import './App.css';
+
+
+const styles = {
+  backgroundColor: "#282c34",
+  minHeight: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "white"
+}
 
 function App() {
 
@@ -19,13 +29,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <input type="file" id="myfileinput" multiple accept=".fit" onChange={(e) => handleChange(e.target.files)}></input>
-        <FitFileViewer
-          file={fitFile}
-        />
-      </header>
+    <div style={styles}>
+      <input type="file" id="myfileinput" multiple accept=".fit" onChange={(e) => handleChange(e.target.files)}></input>
+      <FitFileViewer
+        file={fitFile}
+      />
     </div>
   );
 }

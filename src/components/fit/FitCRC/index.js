@@ -1,14 +1,16 @@
 import React from 'react'
+import Section from '../../layout/section'
 
 const FitCRC = ({ crc }) => {
   return (
-    <div>
+    <Section>
       {crc && (
-        <h1>
+        <>
+          <p>{'CRC'}</p>
           {JSON.stringify(crc)}
-        </h1>
+        </>
       )}
-    </div>
+    </Section>
   )
 }
 
