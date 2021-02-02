@@ -3,7 +3,7 @@ node_js:
    - "10"
 branches:
    only:
-      - main
+      - master
 script:
    - npm install
    - npm run build
@@ -15,4 +15,4 @@ deploy:
   skip_cleanup: true
   local_dir: build
   on:
-    branch: main
+    branch: master
