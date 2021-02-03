@@ -1,7 +1,7 @@
 import React from 'react'
 import FitFileViewer from './components/fit/FitFileViewer'
 import { parseFile } from './libs/fit'
-
+import WeightScaleSingleUserFIT from './examples/WeightScaleSingleUser.fit'
 
 const styles = {
   backgroundColor: "#282c34",
@@ -18,19 +18,39 @@ function App() {
   const [fitFile, setFitFile] = React.useState(null)
 
   var fReader = new FileReader();
+
   fReader.onload = function (e) {
     const arrayBuffer = e.target.result
     setFitFile(parseFile(arrayBuffer))
   }
 
-  const handleChange = (files) => {
-    var file = files[0];
+  const handleChange = (file) => {
     fReader.readAsArrayBuffer(file);
   }
 
+  function readFile(file) {
+    var rawFile = new XMLHttpRequest()
+    rawFile.responseType = "blob";
+    rawFile.open("GET", file, true);
+
+    rawFile.onload = function () {
+      if (rawFile.readyState === 4) {
+        if (rawFile.status === 200 || rawFile.status === 0) {
+          handleChange(rawFile.response)
+
+        }
+      }
+    }
+    rawFile.send(null);
+  }
+
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'development') readFile(WeightScaleSingleUserFIT,)
+  }, [])
+
   return (
     <div style={styles}>
-      <input type="file" id="myfileinput" accept=".fit" onChange={(e) => handleChange(e.target.files)}></input>
+      <input type="file" id="myfileinput" accept=".fit" onChange={(e) => handleChange(e.target.files[0])}></input>
       <FitFileViewer
         file={fitFile}
       />
