@@ -1,6 +1,6 @@
 import React from 'react'
 import FitFileViewer from './components/fit/FitFileViewer'
-import { parseFile } from './libs/fit'
+import { fitReader } from './lib'
 import WeightScaleSingleUserFIT from './examples/WeightScaleSingleUser.fit'
 
 const styles = {
@@ -21,7 +21,7 @@ function App() {
 
   fReader.onload = function (e) {
     const arrayBuffer = e.target.result
-    setFitFile(parseFile(arrayBuffer))
+    setFitFile(fitReader(arrayBuffer))
   }
 
   const handleChange = (file) => {

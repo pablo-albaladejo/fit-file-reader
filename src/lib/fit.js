@@ -111,11 +111,9 @@ export const parseFile = (arrayBuffer) => {
   const header = getFileHeader(view);
 
   const records = getFileRecords(view, header.headerSize, header.dataSize);
-  console.log(records)
 
   const crcOffset = header.headerSize + header.dataSize
   const crc = getFileCRC(view, crcOffset)
-  console.log(crc)
 
   return {
     header,
